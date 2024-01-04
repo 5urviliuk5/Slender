@@ -20,6 +20,8 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (target == null) return;
+
         var currentSpeed = agent.velocity.magnitude;
         var distance = Vector3.Distance(transform.position, target.position);
 
