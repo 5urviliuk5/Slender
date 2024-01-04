@@ -21,7 +21,15 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         var currentSpeed = agent.velocity.magnitude;
-        if (currentSpeed == 0)
+        var distance = Vector3.Distance(transform.position, target.position);
+
+        if (distance < 1.5f)
+        {
+            // JUMPSCARE
+            speed = 0;
+            animator.Play("Scream");
+        }
+        else if (currentSpeed == 0)
         {
             animator.Play("Idle");
         }
@@ -36,8 +44,6 @@ public class Enemy : MonoBehaviour
 
         agent.speed = speed;
 
-
-        var distance = Vector3.Distance(transform.position, target.position);
         if (distance < viewDistance)
         {
             agent.destination = target.position;
@@ -51,9 +57,6 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (distance < 1f)
-        {
-            // JUMPSCARE
-        }
+        
     }
 }
