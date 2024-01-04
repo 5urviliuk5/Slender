@@ -35,7 +35,7 @@ public class PageManager : MonoBehaviour
 
         if (pages == 5)
         {
-            flashlight.isOn = false;
+            flashlight.percents = 0f;
         }
 
         if (pages == 6)
