@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Flashlight : MonoBehaviour
@@ -9,6 +10,7 @@ public class Flashlight : MonoBehaviour
     public AudioSource source;
     public float percents = 100f;
     public float decreaseRate = 1f;
+    public TMP_Text text;
 
     void Update()
     {
@@ -17,6 +19,7 @@ public class Flashlight : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             isOn = !isOn;
+            
             source.Play();
         }
 
@@ -24,6 +27,7 @@ public class Flashlight : MonoBehaviour
         {
             percents -= decreaseRate * Time.deltaTime;
             percents = Mathf.Max(percents, 0f);
+            text.text = ("Battery: ") + percents.ToString() + ("%");
 
             if (percents <= 0)
             {
